@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class TowerManager : Singleton<TowerManager>
 {
-    private TowerButtons towerButtonPressed;
     private SpriteRenderer spriteRenderer;
+
+    public TowerButtons towerButtonPressed { get; set; }  //getter and setter default
 
     // Start is called before the first frame update
     void Start()

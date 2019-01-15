@@ -52,10 +52,10 @@ MonoBehaviour:
   maxEnemiesOnScreen: 8
   totalEnemies: 8
   enemiesPerSpawn: 1
-  MoneyText: {fileID: 0}
+  moneyText: {fileID: 0}
   waveText: {fileID: 0}
   escapedEnemiesText: {fileID: 0}
-  playButtonText: {fileID: 0}
+  playButtonTextLabel: {fileID: 0}
   playButton: {fileID: 0}
   totalWaves: 10
   EnemyList: []

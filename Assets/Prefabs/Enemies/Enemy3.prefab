@@ -166,3 +166,4 @@ MonoBehaviour:
   navigationUpdate: 0
   target: 0
   healthPoints: 300
+  rewardAmount: 3

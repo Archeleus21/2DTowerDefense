@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float navigationUpdate;  //used to update / control time between points
     [SerializeField] private int target = 0;  //keeps track of check points
     [SerializeField] private int healthPoints;  //enemy HP
+    [SerializeField] private int rewardAmount;  //enemy value
 
     private Transform enemy;  //moves enemy
     private Collider2D enemyCollider;  //used to disable collider
@@ -97,7 +98,10 @@ public class Enemy : MonoBehaviour
         //checks if at the last checkpoint
         else if(other.gameObject.tag == "Finish")
         {
+            GameManager.Instance.EscapedEnemiesPerRound += 1;  //keeps track of enemies when they escape
+            GameManager.Instance.TotalEscapedEnemies += 1;
             GameManager.Instance.UnregisterEnemy(this);
+            GameManager.Instance.IsWaveOver(); //checks if wave is over
         }
         //checks if was hit by projectile
         else if(other.gameObject.tag == "Projectile")
@@ -125,8 +129,11 @@ public class Enemy : MonoBehaviour
     //enemy dies
     public void Die()
     {
-        animator.SetTrigger("Dying");
+        animator.SetTrigger("Dying");  //plays death animation
         isDead = true;
         enemyCollider.enabled = false;
+        GameManager.Instance.TotalEnemiesKilled += 1;
+        GameManager.Instance.AddMoney(rewardAmount); //adds money each time enemy dies
+        GameManager.Instance.IsWaveOver();  //checks if wave is over
     }
 }

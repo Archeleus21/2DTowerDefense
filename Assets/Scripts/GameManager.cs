@@ -13,13 +13,13 @@ public class GameManager : Singleton<GameManager> //type is Game Manager
     [SerializeField] private GameObject spawnPoint;  //where enemies spawn
     [SerializeField] private GameObject[] enemies;  //holds enemies
     [SerializeField] private int maxEnemiesOnScreen;  //max enemies allowed
-    [SerializeField] private int totalEnemies;  //total enemies
+    [SerializeField] private int totalEnemies = 3;  //total enemies
     [SerializeField] private int enemiesPerSpawn;  //amount of enemies per spawn
 
-    [SerializeField] private Text moneyText;  //displays accumulated money
-    [SerializeField] private Text waveText;  //displays current wave
-    [SerializeField] private Text escapedEnemiesText;  //displays escaped enemies
-    [SerializeField] private Text playButtonText;  //displays play text
+    [SerializeField] private Text moneyTextLabel;  //displays accumulated money
+    [SerializeField] private Text waveTextLabel;  //displays current wave
+    [SerializeField] private Text escapedEnemiesTextLabel;  //displays escaped enemies
+    [SerializeField] private Text playButtonTextLabel;  //displays play text
     [SerializeField] private Button playButton;  //displays play button
     [SerializeField] private int totalWaves = 10;  //total waves in game
 
@@ -49,15 +49,56 @@ public class GameManager : Singleton<GameManager> //type is Game Manager
         set
         {
             totalMoney = value;
-            moneyText.text = totalMoney.ToString();
+            moneyTextLabel.text = totalMoney.ToString();
         }
     }
 
+    public int TotalEscapedEnemies
+    {
+        get
+        {
+            return totalEscapedEnemies;
+        }
+        set
+        {
+            totalEscapedEnemies = value;
+        }
+    }
+
+    public int EscapedEnemiesPerRound
+    {
+        get
+        {
+            return escapedEnemiesPerRound;
+        }
+        set
+        {
+            escapedEnemiesPerRound = value;
+        }
+    }
+
+    public int TotalEnemiesKilled
+    {
+        get
+        {
+            return totalEnemiesKilled;
+        }
+        set
+        {
+            totalEnemiesKilled = value;
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(SpawnEnemiesOnDelay());
+        playButton.gameObject.SetActive(false);
+        ShowMenu();
+    }
+
+    private void Update()
+    {
+        DeselectTower();
     }
 
     //spawns enemy on delay
@@ -69,7 +110,7 @@ public class GameManager : Singleton<GameManager> //type is Game Manager
             {
                 if (EnemyList.Count < maxEnemiesOnScreen)
                 {
-                    GameObject newEnemy = Instantiate(enemies[1], spawnPoint.transform.position, Quaternion.identity);
+                    GameObject newEnemy = Instantiate(enemies[0], spawnPoint.transform.position, Quaternion.identity);
                 }
             }
         }
@@ -108,5 +149,102 @@ public class GameManager : Singleton<GameManager> //type is Game Manager
     public void AddMoney(int amount)
     {
         TotalMoney += amount;
+    }
+
+    public void SubtractMoney(int amount)
+    {
+        TotalMoney -= amount;
+    }
+
+    public void IsWaveOver()
+    {
+        escapedEnemiesTextLabel.text = "Escaped " + TotalEscapedEnemies + "/10";
+
+        if(EscapedEnemiesPerRound + TotalEnemiesKilled == totalEnemies)
+        {
+            SetCurrentGameState();
+            ShowMenu();
+        }
+    }
+
+    //sets game state based on certain criteria
+    private void SetCurrentGameState()
+    {
+        if(TotalEscapedEnemies >= 10)  //checks if escaped limit is reached
+        {
+            currentGameState = GameStatus.GameOver;
+        }
+        else if(waveNumber == 0 && TotalEnemiesKilled + EscapedEnemiesPerRound == 0)  //starting new game
+        {
+            currentGameState = GameStatus.Play;
+        }
+        else if(waveNumber >= totalWaves)  //completed all rounds
+        {
+            currentGameState = GameStatus.Win;
+        }
+        else
+        {
+            currentGameState = GameStatus.Next;  //if no criteria above is met then player is still playing, go to next round
+        }
+    }
+
+    //shows UI 
+    private void ShowMenu()
+    {
+        switch(currentGameState)
+        {
+            case GameStatus.GameOver:
+                playButtonTextLabel.text = "play Again!";
+                //add gameover sounds
+                break;
+            case GameStatus.Next:
+                playButtonTextLabel.text = "Next Wave!";
+                break;
+            case GameStatus.Play:
+                playButtonTextLabel.text = "Play!";
+                break;
+            case GameStatus.Win:
+                playButtonTextLabel.text = "Play!";
+                break;
+        }
+
+        playButton.gameObject.SetActive(true);
+    }
+
+    public void PlayButtonPressed()
+    {
+        switch (currentGameState)
+        {
+            case GameStatus.Next:
+                waveNumber += 1;
+                totalEnemies += waveNumber;
+                break;
+            default:
+                totalEnemies = 3;
+                TotalEscapedEnemies = 0;
+                TotalMoney = 10;
+                //add List to keep track of towers;
+                moneyTextLabel.text = TotalMoney.ToString();
+                escapedEnemiesTextLabel.text = "Escaped " + TotalEscapedEnemies + " /10";
+                break;
+        }
+
+        //resets all values
+        DestroyAllEnemies();
+        TotalEnemiesKilled = 0;
+        EscapedEnemiesPerRound = 0;
+        waveTextLabel.text = "Wave " + (waveNumber + 1);
+        StartCoroutine(SpawnEnemiesOnDelay());
+        playButton.gameObject.SetActive(false);
+    }
+
+    //lets player deselect tower without costs
+    private void DeselectTower()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            TowerManager.Instance.DisableDragSprite();  //stop tower from being on mouse pointer
+            TowerManager.Instance.towerButtonPressed = null;
+        }
     }
 }

@@ -7,6 +7,7 @@ public class TowerButtons : MonoBehaviour
 
     [SerializeField] private GameObject towerObject;
     [SerializeField] private Sprite dragSprite;
+    [SerializeField] private int towerPrice;
 
     //--------------------------------------
     //getters
@@ -24,6 +25,14 @@ public class TowerButtons : MonoBehaviour
         get
         {
             return dragSprite;  //returns sprite attached to button
+        }
+    }
+
+    public int TowerPrice
+    {
+        get
+        {
+            return towerPrice;
         }
     }
 }
