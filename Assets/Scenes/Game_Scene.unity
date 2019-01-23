@@ -19235,26 +19235,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 667329817388325983, guid: 2781e282e9ed3a147a6c31d1ecf1267d,
         type: 3}
-      propertyPath: waveText
-      value: 
-      objectReference: {fileID: 1981285576}
-    - target: {fileID: 667329817388325983, guid: 2781e282e9ed3a147a6c31d1ecf1267d,
-        type: 3}
-      propertyPath: escapedEnemiesText
-      value: 
-      objectReference: {fileID: 1342266391}
-    - target: {fileID: 667329817388325983, guid: 2781e282e9ed3a147a6c31d1ecf1267d,
-        type: 3}
-      propertyPath: playButtonTextLabel
-      value: 
-      objectReference: {fileID: 1981285576}
-    - target: {fileID: 667329817388325983, guid: 2781e282e9ed3a147a6c31d1ecf1267d,
-        type: 3}
-      propertyPath: playButton
-      value: 
-      objectReference: {fileID: 1952250955}
-    - target: {fileID: 667329817388325983, guid: 2781e282e9ed3a147a6c31d1ecf1267d,
-        type: 3}
       propertyPath: moneyTextLabel
       value: 
       objectReference: {fileID: 618897733}
@@ -19268,6 +19248,16 @@ PrefabInstance:
       propertyPath: escapedEnemiesTextLabel
       value: 
       objectReference: {fileID: 1342266391}
+    - target: {fileID: 667329817388325983, guid: 2781e282e9ed3a147a6c31d1ecf1267d,
+        type: 3}
+      propertyPath: playButtonTextLabel
+      value: 
+      objectReference: {fileID: 1981285576}
+    - target: {fileID: 667329817388325983, guid: 2781e282e9ed3a147a6c31d1ecf1267d,
+        type: 3}
+      propertyPath: playButton
+      value: 
+      objectReference: {fileID: 1952250955}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2781e282e9ed3a147a6c31d1ecf1267d, type: 3}
 --- !u!1 &765752714

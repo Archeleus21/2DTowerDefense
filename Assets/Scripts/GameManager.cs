@@ -12,7 +12,6 @@ public class GameManager : Singleton<GameManager> //type is Game Manager
 {
     [SerializeField] private GameObject spawnPoint;  //where enemies spawn
     [SerializeField] private GameObject[] enemies;  //holds enemies
-    [SerializeField] private int maxEnemiesOnScreen;  //max enemies allowed
     [SerializeField] private int totalEnemies = 3;  //total enemies
     [SerializeField] private int enemiesPerSpawn;  //amount of enemies per spawn
 
@@ -108,7 +107,7 @@ public class GameManager : Singleton<GameManager> //type is Game Manager
         {
             for (int i = 0; i < enemiesPerSpawn; i++)
             {
-                if (EnemyList.Count < maxEnemiesOnScreen)
+                if (EnemyList.Count < totalEnemies)
                 {
                     GameObject newEnemy = Instantiate(enemies[0], spawnPoint.transform.position, Quaternion.identity);
                 }
@@ -211,21 +210,25 @@ public class GameManager : Singleton<GameManager> //type is Game Manager
         playButton.gameObject.SetActive(true);
     }
 
+    //starts the game 
     public void PlayButtonPressed()
     {
         switch (currentGameState)
         {
-            case GameStatus.Next:
-                waveNumber += 1;
-                totalEnemies += waveNumber;
+            //if game is ready for next wave
+            case GameStatus.Next:  
+                waveNumber += 1;  //adds to the wave number
+                totalEnemies += waveNumber;  //adds to the enemies per wave number
                 break;
+            //default setting when game starts
             default:
-                totalEnemies = 3;
-                TotalEscapedEnemies = 0;
-                TotalMoney = 10;
-                //add List to keep track of towers;
-                moneyTextLabel.text = TotalMoney.ToString();
-                escapedEnemiesTextLabel.text = "Escaped " + TotalEscapedEnemies + " /10";
+                totalEnemies = 3;  //enemy start count
+                TotalEscapedEnemies = 0;  //starting live or amount of enemies lost
+                TotalMoney = 10;  //starting money
+                TowerManager.Instance.DestroyAllTowers();  //clears board of all towers
+                TowerManager.Instance.RenameBuildSiteTags();  //resets all build tiles so player can build on them
+                moneyTextLabel.text = TotalMoney.ToString();  //displays money
+                escapedEnemiesTextLabel.text = "Escaped " + TotalEscapedEnemies + " /10";  //displays label ui text
                 break;
         }
 

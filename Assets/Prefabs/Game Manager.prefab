@@ -49,13 +49,12 @@ MonoBehaviour:
   - {fileID: 7415926883183353924, guid: 1f24938a0cbfec54ab9a0760118163c1, type: 3}
   - {fileID: 4167161037770939117, guid: 082558386365779439cb0a95918ff090, type: 3}
   - {fileID: 1749963185137008169, guid: b8fc8b00fd8d5fb47aadbdfe7efac8c9, type: 3}
-  maxEnemiesOnScreen: 8
-  totalEnemies: 8
+  totalEnemies: 3
   enemiesPerSpawn: 1
-  moneyText: {fileID: 0}
-  waveText: {fileID: 0}
-  escapedEnemiesText: {fileID: 0}
+  moneyTextLabel: {fileID: 0}
+  waveTextLabel: {fileID: 0}
+  escapedEnemiesTextLabel: {fileID: 0}
   playButtonTextLabel: {fileID: 0}
   playButton: {fileID: 0}
-  totalWaves: 10
+  totalWaves: 9
   EnemyList: []

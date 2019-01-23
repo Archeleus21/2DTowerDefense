@@ -5,14 +5,14 @@ using UnityEngine;
 public class TowerButtons : MonoBehaviour
 {
 
-    [SerializeField] private GameObject towerObject;
+    [SerializeField] private Tower towerObject;
     [SerializeField] private Sprite dragSprite;
     [SerializeField] private int towerPrice;
 
     //--------------------------------------
     //getters
     //--------------------------------------
-    public GameObject TowerObject
+    public Tower TowerObject
     {
         get
         {
