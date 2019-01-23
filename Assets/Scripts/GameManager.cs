@@ -30,6 +30,7 @@ public class GameManager : Singleton<GameManager> //type is Game Manager
     private int EnemyToSpawn = 0;  //selects which enemy to spawn
 
     private GameStatus currentGameState = GameStatus.Play;  //handles current game state
+    private AudioSource audioSource;
 
     const float spawnDelay = 1f;  //delay between enemies
 
@@ -88,10 +89,20 @@ public class GameManager : Singleton<GameManager> //type is Game Manager
         }
     }
 
+    public AudioSource GameAudioSource
+    {
+        get
+        {
+            return audioSource;
+        }
+    }
+    //--------------------------------------
+
     // Start is called before the first frame update
     void Start()
     {
         playButton.gameObject.SetActive(false);
+        audioSource = GetComponent<AudioSource>();
         ShowMenu();
     }
 
@@ -222,6 +233,7 @@ public class GameManager : Singleton<GameManager> //type is Game Manager
                 break;
             //default setting when game starts
             default:
+                audioSource.PlayOneShot(SoundManager.Instance.NewGameSFX);
                 totalEnemies = 3;  //enemy start count
                 TotalEscapedEnemies = 0;  //starting live or amount of enemies lost
                 TotalMoney = 10;  //starting money

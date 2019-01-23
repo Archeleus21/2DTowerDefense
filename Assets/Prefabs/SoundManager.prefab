@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &667329817388325980
+--- !u!1 &8641229249983748985
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,72 +8,45 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 667329817388325982}
-  - component: {fileID: 667329817388325983}
-  - component: {fileID: 5904948067143931485}
+  - component: {fileID: 8641229249983748984}
+  - component: {fileID: 8641229249983748966}
+  - component: {fileID: 8641229249983748967}
   m_Layer: 0
-  m_Name: Game Manager
+  m_Name: SoundManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &667329817388325982
+--- !u!4 &8641229249983748984
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 667329817388325980}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.5170655, y: 0.21479042, z: 0.087890625}
+  m_GameObject: {fileID: 8641229249983748985}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 491.2785, y: 217.66739, z: 13.132142}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &667329817388325983
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 667329817388325980}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e161fbc68e75d14ca96c4a9dcca8ac6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnPoint: {fileID: 5757708566076846983, guid: 4af6ac4945d66824a92e3f68789d89a0,
-    type: 3}
-  enemies:
-  - {fileID: 7415926883183353924, guid: 1f24938a0cbfec54ab9a0760118163c1, type: 3}
-  - {fileID: 4167161037770939117, guid: 082558386365779439cb0a95918ff090, type: 3}
-  - {fileID: 1749963185137008169, guid: b8fc8b00fd8d5fb47aadbdfe7efac8c9, type: 3}
-  totalEnemies: 3
-  enemiesPerSpawn: 1
-  moneyTextLabel: {fileID: 0}
-  waveTextLabel: {fileID: 0}
-  escapedEnemiesTextLabel: {fileID: 0}
-  playButtonTextLabel: {fileID: 0}
-  playButton: {fileID: 0}
-  totalWaves: 9
-  EnemyList: []
---- !u!82 &5904948067143931485
+--- !u!82 &8641229249983748966
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 667329817388325980}
+  m_GameObject: {fileID: 8641229249983748985}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: a7f6bab12a3879e428398a55e4334943, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.3
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -155,3 +128,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8641229249983748967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8641229249983748985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cafa1e3c22c24f4a9e4a9900be7d67a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rockSFX: {fileID: 8300000, guid: 65df31b4ef3ee9d418e13a94c90ecb39, type: 3}
+  arrowSFX: {fileID: 8300000, guid: 79ea906bca555e74fa5568c26812f269, type: 3}
+  fireballSFX: {fileID: 8300000, guid: 342f872fc66e4bb45b5231f6283e7914, type: 3}
+  hitSFX: {fileID: 8300000, guid: ad6c48a8abb101949bdb4e7e9e077bb1, type: 3}
+  deathSFX: {fileID: 8300000, guid: f731745fc874c9144b9d94f65fad8c46, type: 3}
+  levelSFX: {fileID: 8300000, guid: a7f6bab12a3879e428398a55e4334943, type: 3}
+  towerBuiltSFX: {fileID: 8300000, guid: e4adb14c63b8b4c4b800fa369281bfdd, type: 3}
+  newGameSFX: {fileID: 8300000, guid: fb6a593e1660a424d82a3266604c58e2, type: 3}
+  gameOverSFX: {fileID: 8300000, guid: 294b8253d94209244b01a3438a3a740f, type: 3}
