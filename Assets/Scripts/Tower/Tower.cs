@@ -76,6 +76,21 @@ public class Tower : MonoBehaviour
         //sets initial position for projectile
         newProjectile.transform.position = transform.position;
 
+        //Used to determine which projectile is being shot
+        if(newProjectile.ProjectileType == ProType.Arrow)
+        {
+            GameManager.Instance.GameAudioSource.PlayOneShot(SoundManager.Instance.ArrowSFX);
+        }
+        else if(newProjectile.ProjectileType == ProType.Fireball)
+        {
+            GameManager.Instance.GameAudioSource.PlayOneShot(SoundManager.Instance.FireballSFX);
+        }
+        else if(newProjectile.ProjectileType == ProType.Rock)
+        {
+            GameManager.Instance.GameAudioSource.PlayOneShot(SoundManager.Instance.RockSFX);
+
+        }
+
         //check if target exists
         if (targetEnemy == null)
         {
@@ -151,7 +166,7 @@ public class Tower : MonoBehaviour
         {
             //takes towers position subtracts enemy position and checks if within tower range
             //then adds it to the list
-            if(Vector2.Distance(transform.localPosition, enemy.transform.localPosition) <= attackRange)
+            if(Vector2.Distance(transform.localPosition, enemy.transform.localPosition) <= attackRange && !enemy.IsDead)
             {
                 enemiesInRange.Add(enemy);
             }

@@ -126,6 +126,9 @@ public class TowerManager : Singleton<TowerManager>
             //subtracts price of tower from player money
             BuyTower(towerButtonPressed.TowerPrice);
 
+            //audio for placing tower
+            GameManager.Instance.GameAudioSource.PlayOneShot(SoundManager.Instance.TowerBuiltSFX);
+
             //adds tower to the list
             RegisterTower(newTower);
 

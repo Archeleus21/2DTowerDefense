@@ -161,7 +161,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94b7e007f11c61e488a299f6cedb6db4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  exitPoint: {fileID: 0}
+  exitPoint: {fileID: 6225611488326496445, guid: 4f937e917d843f74cbae8b0e1b5bb436,
+    type: 3}
   checkPoints: []
   navigationUpdate: 0
   target: 0

@@ -91,12 +91,12 @@ public class Enemy : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         //cycles through checkpoints
-        if(other.gameObject.tag == "Checkpoint")
+        if (other.gameObject.tag == "Checkpoint")
         {
             target++;
         }
         //checks if at the last checkpoint
-        else if(other.gameObject.tag == "Finish")
+        else if (other.gameObject.tag == "Finish")
         {
             GameManager.Instance.EscapedEnemiesPerRound += 1;  //keeps track of enemies when they escape
             GameManager.Instance.TotalEscapedEnemies += 1;
@@ -104,10 +104,10 @@ public class Enemy : MonoBehaviour
             GameManager.Instance.IsWaveOver(); //checks if wave is over
         }
         //checks if was hit by projectile
-        else if(other.gameObject.tag == "Projectile")
+        else if (other.gameObject.tag == "Projectile")
         {
             //gives access to attackstrength variable
-            Projectile newProjectile = other.gameObject.GetComponent<Projectile>();  
+            Projectile newProjectile = other.gameObject.GetComponent<Projectile>();
             takeDamage(newProjectile.AttackStrength); //takes damage equal to projectile strength
         }
     }
@@ -119,10 +119,14 @@ public class Enemy : MonoBehaviour
         {
             healthPoints -= hitPoints;
             animator.Play("TakeDamage");
+            
+            //plays sound for taking damage
+            GameManager.Instance.GameAudioSource.PlayOneShot(SoundManager.Instance.HitSFX);
         }
         else
         {
             Die();
+            Destroy(this, 2f);
         }
     }
 
@@ -132,8 +136,11 @@ public class Enemy : MonoBehaviour
         animator.SetTrigger("Dying");  //plays death animation
         isDead = true;
         enemyCollider.enabled = false;
+        GameManager.Instance.GameAudioSource.PlayOneShot(SoundManager.Instance.DeathSFX);
         GameManager.Instance.TotalEnemiesKilled += 1;
         GameManager.Instance.AddMoney(rewardAmount); //adds money each time enemy dies
+        GameManager.Instance.AddScore(rewardAmount);
         GameManager.Instance.IsWaveOver();  //checks if wave is over
     }
+
 }
