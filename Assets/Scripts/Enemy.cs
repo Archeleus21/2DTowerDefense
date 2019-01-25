@@ -136,6 +136,7 @@ public class Enemy : MonoBehaviour
         animator.SetTrigger("Dying");  //plays death animation
         isDead = true;
         enemyCollider.enabled = false;
+        GameManager.Instance.UnregisterEnemy(this);
         GameManager.Instance.GameAudioSource.PlayOneShot(SoundManager.Instance.DeathSFX);
         GameManager.Instance.TotalEnemiesKilled += 1;
         GameManager.Instance.AddMoney(rewardAmount); //adds money each time enemy dies

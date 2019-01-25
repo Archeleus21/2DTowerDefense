@@ -38,7 +38,7 @@ public class GameManager : Singleton<GameManager> //type is Game Manager
     private GameStatus currentGameState = GameStatus.Play;  //handles current game state
     private AudioSource audioSource;
 
-    const float spawnDelay = 2f;  //delay between enemies
+    const float spawnDelay = 1f;  //delay between enemies
 
     //list to store enemies that are spawned
     public List<Enemy> EnemyList = new List<Enemy>();
@@ -145,19 +145,16 @@ public class GameManager : Singleton<GameManager> //type is Game Manager
     //spawns enemy on delay
     IEnumerator SpawnEnemiesOnDelay()
     {
-        while (EnemyList.Count < TotalEnemies)
+        while (TotalEnemies > 0)
         {
-            if (enemiesPerSpawn > 0 && EnemyList.Count < TotalEnemies)
+            for (int i = 0; i < TotalEnemies; i++)
             {
-                for (int i = 0; i < enemiesPerSpawn; i++)
-                {
-                    if (EnemyList.Count < TotalEnemies)
-                    {
-                        Enemy newEnemy = Instantiate(enemies[Random.Range(0, EnemyToSpawn)], spawnPoint.transform.position, Quaternion.identity);
-                    }
-                }
+
+                Enemy newEnemy = Instantiate(enemies[Random.Range(0, EnemyToSpawn)], spawnPoint.transform.position, Quaternion.identity);
+                yield return new WaitForSeconds(spawnDelay);
+                    
             }
-            yield return new WaitForSeconds(spawnDelay);
+            break;            
         }
     }
 
@@ -271,7 +268,7 @@ public class GameManager : Singleton<GameManager> //type is Game Manager
         playButtonTextLabel.text = "Play Again!";
         gameOverDisplay.gameObject.SetActive(true);
         gameOverTextLabel.text = "You Win!";
-        completedWaveTextLabel.text = waveNumber.ToString() + "/10";
+        completedWaveTextLabel.text = (waveNumber + 1).ToString() + "/10";
         totalScoreTextLabel.text = TotalScore.ToString();
     }
 
@@ -281,7 +278,7 @@ public class GameManager : Singleton<GameManager> //type is Game Manager
         audioSource.PlayOneShot(SoundManager.Instance.GameOverSFX);  //plays game over sound
         gameOverDisplay.gameObject.SetActive(true);
         gameOverTextLabel.text = "You Lose!";
-        completedWaveTextLabel.text = waveNumber.ToString() + "/10";
+        completedWaveTextLabel.text = (waveNumber + 1).ToString() + "/10";
         totalScoreTextLabel.text = TotalScore.ToString();
     }
 
@@ -294,6 +291,7 @@ public class GameManager : Singleton<GameManager> //type is Game Manager
             case GameStatus.Next:
                 waveNumber += 1;  //adds to the wave number
                 totalEnemies += waveNumber;  //adds to the enemies per wave number
+               // TotalEnemiesKilled = 0;
                 break;
             //default setting when game starts
             default:
@@ -321,6 +319,7 @@ public class GameManager : Singleton<GameManager> //type is Game Manager
         totalEnemies = 3;  //enemy start count
         EnemyToSpawn = 0;  //spawns lowest strength enemies
         TotalEscapedEnemies = 0;  //starting live or amount of enemies lost
+        waveNumber = 0;  //reset wave number to zero
         TotalMoney = 10;  //starting money
         TotalScore = 0;  //starting score
         TowerManager.Instance.DestroyAllTowers();  //clears board of all towers

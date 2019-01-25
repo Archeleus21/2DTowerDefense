@@ -19311,14 +19311,34 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 667329817388325983, guid: 2781e282e9ed3a147a6c31d1ecf1267d,
         type: 3}
+      propertyPath: gameOverTextLabel
+      value: 
+      objectReference: {fileID: 1044456407}
+    - target: {fileID: 667329817388325983, guid: 2781e282e9ed3a147a6c31d1ecf1267d,
+        type: 3}
+      propertyPath: gameOverDisplay
+      value: 
+      objectReference: {fileID: 997123609}
+    - target: {fileID: 667329817388325983, guid: 2781e282e9ed3a147a6c31d1ecf1267d,
+        type: 3}
       propertyPath: moneyTextLabel
       value: 
       objectReference: {fileID: 618897733}
     - target: {fileID: 667329817388325983, guid: 2781e282e9ed3a147a6c31d1ecf1267d,
         type: 3}
+      propertyPath: totalScoreTextLabel
+      value: 
+      objectReference: {fileID: 1530695645}
+    - target: {fileID: 667329817388325983, guid: 2781e282e9ed3a147a6c31d1ecf1267d,
+        type: 3}
       propertyPath: waveTextLabel
       value: 
       objectReference: {fileID: 1531771681}
+    - target: {fileID: 667329817388325983, guid: 2781e282e9ed3a147a6c31d1ecf1267d,
+        type: 3}
+      propertyPath: completedWaveTextLabel
+      value: 
+      objectReference: {fileID: 2006970358}
     - target: {fileID: 667329817388325983, guid: 2781e282e9ed3a147a6c31d1ecf1267d,
         type: 3}
       propertyPath: escapedEnemiesTextLabel
@@ -19336,56 +19356,8 @@ PrefabInstance:
       objectReference: {fileID: 1952250955}
     - target: {fileID: 667329817388325983, guid: 2781e282e9ed3a147a6c31d1ecf1267d,
         type: 3}
-      propertyPath: totalScoreTextLabel
-      value: 
-      objectReference: {fileID: 1530695645}
-    - target: {fileID: 667329817388325983, guid: 2781e282e9ed3a147a6c31d1ecf1267d,
-        type: 3}
-      propertyPath: completedWaveTextLabel
-      value: 
-      objectReference: {fileID: 2006970358}
-    - target: {fileID: 667329817388325983, guid: 2781e282e9ed3a147a6c31d1ecf1267d,
-        type: 3}
-      propertyPath: gameOverDisplay
-      value: 
-      objectReference: {fileID: 997123609}
-    - target: {fileID: 667329817388325983, guid: 2781e282e9ed3a147a6c31d1ecf1267d,
-        type: 3}
-      propertyPath: gameOverTextLabel
-      value: 
-      objectReference: {fileID: 1044456407}
-    - target: {fileID: 667329817388325983, guid: 2781e282e9ed3a147a6c31d1ecf1267d,
-        type: 3}
-      propertyPath: enemies.Array.data[0]
-      value: 
-      objectReference: {fileID: 3916354516500563907, guid: 1f24938a0cbfec54ab9a0760118163c1,
-        type: 3}
-    - target: {fileID: 667329817388325983, guid: 2781e282e9ed3a147a6c31d1ecf1267d,
-        type: 3}
-      propertyPath: enemies.Array.data[1]
-      value: 
-      objectReference: {fileID: 7928963234219763654, guid: 082558386365779439cb0a95918ff090,
-        type: 3}
-    - target: {fileID: 667329817388325983, guid: 2781e282e9ed3a147a6c31d1ecf1267d,
-        type: 3}
-      propertyPath: enemies.Array.data[2]
-      value: 
-      objectReference: {fileID: 2167487016109964030, guid: b8fc8b00fd8d5fb47aadbdfe7efac8c9,
-        type: 3}
-    - target: {fileID: 667329817388325983, guid: 2781e282e9ed3a147a6c31d1ecf1267d,
-        type: 3}
-      propertyPath: totalEnemies
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 667329817388325983, guid: 2781e282e9ed3a147a6c31d1ecf1267d,
-        type: 3}
       propertyPath: totalWaves
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5904948067143931485, guid: 2781e282e9ed3a147a6c31d1ecf1267d,
-        type: 3}
-      propertyPath: BypassReverbZones
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2781e282e9ed3a147a6c31d1ecf1267d, type: 3}

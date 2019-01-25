@@ -47,13 +47,17 @@ MonoBehaviour:
   spawnPoint: {fileID: 5757708566076846983, guid: 4af6ac4945d66824a92e3f68789d89a0,
     type: 3}
   enemies:
-  - {fileID: 7415926883183353924, guid: 1f24938a0cbfec54ab9a0760118163c1, type: 3}
-  - {fileID: 4167161037770939117, guid: 082558386365779439cb0a95918ff090, type: 3}
-  - {fileID: 1749963185137008169, guid: b8fc8b00fd8d5fb47aadbdfe7efac8c9, type: 3}
-  totalEnemies: 3
+  - {fileID: 3916354516500563907, guid: 1f24938a0cbfec54ab9a0760118163c1, type: 3}
+  - {fileID: 7928963234219763654, guid: 082558386365779439cb0a95918ff090, type: 3}
+  - {fileID: 2167487016109964030, guid: b8fc8b00fd8d5fb47aadbdfe7efac8c9, type: 3}
+  totalEnemies: 0
   enemiesPerSpawn: 1
+  gameOverTextLabel: {fileID: 0}
+  gameOverDisplay: {fileID: 0}
   moneyTextLabel: {fileID: 0}
+  totalScoreTextLabel: {fileID: 0}
   waveTextLabel: {fileID: 0}
+  completedWaveTextLabel: {fileID: 0}
   escapedEnemiesTextLabel: {fileID: 0}
   playButtonTextLabel: {fileID: 0}
   playButton: {fileID: 0}

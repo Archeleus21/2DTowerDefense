@@ -129,7 +129,7 @@ public class Tower : MonoBehaviour
         }
 
         //destroys projectile if the projectile has already been created or if no target exists
-        if(projectile != null || targetEnemy == null)
+        if(projectile != null && targetEnemy == null)
         {
             Destroy(projectile.gameObject);
         }
@@ -166,9 +166,16 @@ public class Tower : MonoBehaviour
         {
             //takes towers position subtracts enemy position and checks if within tower range
             //then adds it to the list
-            if(Vector2.Distance(transform.localPosition, enemy.transform.localPosition) <= attackRange && !enemy.IsDead)
+            if(Vector2.Distance(transform.localPosition, enemy.transform.localPosition) <= attackRange)
             {
-                enemiesInRange.Add(enemy);
+                if (enemy == null)
+                {
+                    return null;
+                }
+                else
+                {
+                    enemiesInRange.Add(enemy);
+                }
             }
         }
 
