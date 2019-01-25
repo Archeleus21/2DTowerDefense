@@ -100,7 +100,7 @@ public class Enemy : MonoBehaviour
         {
             GameManager.Instance.EscapedEnemiesPerRound += 1;  //keeps track of enemies when they escape
             GameManager.Instance.TotalEscapedEnemies += 1;
-            GameManager.Instance.UnregisterEnemy(this);
+            GameManager.Instance.UnregisterEnemy(this);  //removes enemy from enemy list
             GameManager.Instance.IsWaveOver(); //checks if wave is over
         }
         //checks if was hit by projectile
@@ -126,7 +126,6 @@ public class Enemy : MonoBehaviour
         else
         {
             Die();
-            Destroy(this, 2f);
         }
     }
 

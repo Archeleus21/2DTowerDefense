@@ -168,14 +168,7 @@ public class Tower : MonoBehaviour
             //then adds it to the list
             if(Vector2.Distance(transform.localPosition, enemy.transform.localPosition) <= attackRange)
             {
-                if (enemy == null)
-                {
-                    return null;
-                }
-                else
-                {
-                    enemiesInRange.Add(enemy);
-                }
+                enemiesInRange.Add(enemy);               
             }
         }
 

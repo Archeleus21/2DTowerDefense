@@ -38,7 +38,7 @@ public class GameManager : Singleton<GameManager> //type is Game Manager
     private GameStatus currentGameState = GameStatus.Play;  //handles current game state
     private AudioSource audioSource;
 
-    const float spawnDelay = 1f;  //delay between enemies
+    const float spawnDelay = .5f;  //delay between enemies
 
     //list to store enemies that are spawned
     public List<Enemy> EnemyList = new List<Enemy>();
@@ -168,7 +168,7 @@ public class GameManager : Singleton<GameManager> //type is Game Manager
     public void UnregisterEnemy(Enemy enemy)
     {
         EnemyList.Remove(enemy);
-        Destroy(enemy.gameObject);
+        Destroy(enemy.gameObject, 2f);
     }
 
     //removes remaining enemies from list at end of round

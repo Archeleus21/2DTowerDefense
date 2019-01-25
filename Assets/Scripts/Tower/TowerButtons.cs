@@ -32,7 +32,7 @@ public class TowerButtons : MonoBehaviour
     {
         get
         {
-            return towerPrice;
+            return towerPrice;  //returns tower price
         }
     }
 }
